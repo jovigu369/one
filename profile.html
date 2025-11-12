@@ -11,45 +11,76 @@
       --muted:#d6dbe8;
       --accent:#4050a8;
       --text:#0b132b;
+      --glass: rgba(255,255,255,0.06);
     }
-    html,body{height:100%;margin:0;font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;background: linear-gradient(180deg,var(--indigo) 0%, #1f274f 100%);color:var(--card)}
-    .container{min-height:100%;display:flex;align-items:center;justify-content:center;padding:40px}
-    .card{background:rgba(255,255,255,0.06);backdrop-filter:blur(6px);width:100%;max-width:900px;border-radius:12px;padding:28px 28px 36px;box-shadow:0 6px 30px rgba(2,6,23,0.45);position:relative;border:1px solid rgba(255,255,255,0.06)}
 
-  header{display:flex;align-items:flex-start;justify-content:space-between}
-  .title-block{flex:1;margin-right:16px}
-    h1{margin:0;font-size:26px;color:var(--card);font-weight:600}
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(180deg,var(--indigo) 0%, #1f274f 100%);
+      color:var(--card);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* 页面居中容器 */
+    .container{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px;
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      backdrop-filter: blur(6px);
+      width:100%;
+      max-width:900px;
+      border-radius:12px;
+      padding:28px 28px 36px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.55);
+      position:relative;
+      border:1px solid rgba(255,255,255,0.04);
+      text-align:center; /* 居中内容 */
+    }
+
+    header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+    .title-block{flex:1;margin-right:8px}
+    h1{margin:0;font-size:28px;color:var(--card);font-weight:700;letter-spacing:0.2px}
     .subtitle{margin-top:6px;color:var(--muted);font-size:14px}
 
-    /* 右上角上传区域 */
-  .photo-uploader{position:static;width:150px;height:150px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));display:flex;align-items:center;justify-content:center;flex-direction:column;border:1px dashed rgba(255,255,255,0.08);overflow:hidden;align-self:flex-start}
+    /* 右上角上传区域（150x150） */
+    .photo-uploader{position:static;width:150px;height:150px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));display:flex;align-items:center;justify-content:center;flex-direction:column;border:1px dashed rgba(255,255,255,0.06);overflow:hidden;align-self:flex-start}
     .photo-uploader input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
-  .photo-placeholder{width:150px;height:150px;border-radius:6px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px}
+    .photo-placeholder{width:150px;height:150px;border-radius:6px;background:var(--glass);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px}
     .photo-preview{width:100%;height:100%;object-fit:cover;display:block}
 
-    main{margin-top:18px;display:flex;gap:28px}
-    .left{flex:2}
-    .right{flex:1}
+    main{margin-top:18px;display:flex;gap:28px;align-items:flex-start}
+    .left{flex:2;display:flex;flex-direction:column;align-items:center}
+    .right{flex:1;display:flex;flex-direction:column;align-items:center}
 
-    .info{background:rgba(255,255,255,0.02);padding:18px;border-radius:8px}
-    .info p{margin:6px 0;color:var(--muted)}
+    .info{background:rgba(255,255,255,0.02);padding:18px;border-radius:8px;width:100%}
+    .info p{margin:10px 0;color:var(--muted);text-align:center}
 
     .section{margin-bottom:16px}
     .section h3{margin:0 0 10px 0;color:var(--card);font-size:16px}
-    ul{list-style:none;padding:0;margin:0}
-    li{background:rgba(255,255,255,0.03);padding:10px;border-radius:6px;margin-bottom:8px;color:var(--muted);font-size:14px}
+    ul{list-style:none;padding:0;margin:0;width:100%}
+    li{background:rgba(255,255,255,0.03);padding:10px;border-radius:6px;margin-bottom:8px;color:var(--muted);font-size:14px;text-align:center}
 
-    .skills{display:flex;flex-wrap:wrap;gap:8px}
-    .skill{background:rgba(255,255,255,0.04);padding:8px 10px;border-radius:16px;color:var(--card);font-size:13px}
+    .skills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+    .skill{background:rgba(255,255,255,0.06);padding:8px 12px;border-radius:16px;color:var(--card);font-size:13px}
 
-    footer{margin-top:18px;text-align:right;color:var(--muted);font-size:13px}
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
 
     /* 小屏幕适配 */
-    @media (max-width:720px){
+    @media (max-width:920px){
       .card{padding:20px}
-      main{flex-direction:column}
-      .photo-uploader{position:static;width:100%;height:120px;margin-top:12px}
+      main{flex-direction:column;align-items:center}
+      .photo-uploader{position:static;width:150px;height:150px;margin-top:12px}
       .title-block{max-width:100%}
+      .info{padding:14px}
     }
   </style>
 </head>
@@ -76,8 +107,8 @@
           <section class="section info" aria-label="关于我">
             <h3>关于我</h3>
             <p>你好，我是 Jovi，一名前端开发者，专注于构建简洁、可访问且性能良好的网页应用。具备良好的产品感和团队协作能力。</p>
-            <p>地点：北京市 • 可远程工作</p>
-            <p>邮箱：jovi@example.com</p>
+            <p>地点：苏州市 • 可远程工作</p>
+            <p>邮箱：jovi@163.com</p>
           </section>
 
           <section class="section" aria-label="技能">
@@ -113,12 +144,12 @@
         <aside class="right">
           <div class="section info" aria-label="联系方式">
             <h3>联系我</h3>
-            <p>邮箱：jovi@example.com</p>
-            <p>电话：+86 138 0000 0000</p>
+            <p>邮箱：jovi@163.com</p>
+            <p>电话：+86 173 1558 8251</p>
             <p>GitHub：github.com/jovigu369</p>
           </div>
 
-          <div class="section info" aria-label="可用时间">
+          <div class="section info" aria-label="工作时间">
             <h3>可用时间</h3>
             <p>周一至周五 9:00 - 18:00</p>
           </div>
