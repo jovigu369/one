@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>个人简介 — Jovi</title>
+  <style>
+    :root{
+      --indigo:#2e3b6e; /* 稳重靛蓝 */
+      --card:#ffffff;
+      --muted:#d6dbe8;
+      --accent:#4050a8;
+      --text:#0b132b;
+    }
+    html,body{height:100%;margin:0;font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;background: linear-gradient(180deg,var(--indigo) 0%, #1f274f 100%);color:var(--card)}
+    .container{min-height:100%;display:flex;align-items:center;justify-content:center;padding:40px}
+    .card{background:rgba(255,255,255,0.06);backdrop-filter:blur(6px);width:100%;max-width:900px;border-radius:12px;padding:28px 28px 36px;box-shadow:0 6px 30px rgba(2,6,23,0.45);position:relative;border:1px solid rgba(255,255,255,0.06)}
+
+    header{display:flex;align-items:center;justify-content:space-between}
+    .title-block{max-width:72%}
+    h1{margin:0;font-size:26px;color:var(--card);font-weight:600}
+    .subtitle{margin-top:6px;color:var(--muted);font-size:14px}
+
+    /* 右上角上传区域 */
+    .photo-uploader{position:absolute;top:20px;right:20px;width:120px;height:120px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));display:flex;align-items:center;justify-content:center;flex-direction:column;border:1px dashed rgba(255,255,255,0.08);overflow:hidden}
+    .photo-uploader input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
+    .photo-placeholder{width:88px;height:88px;border-radius:6px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px}
+    .photo-preview{width:100%;height:100%;object-fit:cover;display:block}
+
+    main{margin-top:18px;display:flex;gap:28px}
+    .left{flex:2}
+    .right{flex:1}
+
+    .info{background:rgba(255,255,255,0.02);padding:18px;border-radius:8px}
+    .info p{margin:6px 0;color:var(--muted)}
+
+    .section{margin-bottom:16px}
+    .section h3{margin:0 0 10px 0;color:var(--card);font-size:16px}
+    ul{list-style:none;padding:0;margin:0}
+    li{background:rgba(255,255,255,0.03);padding:10px;border-radius:6px;margin-bottom:8px;color:var(--muted);font-size:14px}
+
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{background:rgba(255,255,255,0.04);padding:8px 10px;border-radius:16px;color:var(--card);font-size:13px}
+
+    footer{margin-top:18px;text-align:right;color:var(--muted);font-size:13px}
+
+    /* 小屏幕适配 */
+    @media (max-width:720px){
+      .card{padding:20px}
+      main{flex-direction:column}
+      .photo-uploader{position:static;width:100%;height:120px;margin-top:12px}
+      .title-block{max-width:100%}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="card" aria-labelledby="profile-title">
+      <header>
+        <div class="title-block">
+          <h1 id="profile-title">个人简介</h1>
+          <div class="subtitle">姓名：Jovi · 前端开发 / 产品热爱者</div>
+        </div>
+
+        <!-- 右上角上传照片区域 -->
+        <label class="photo-uploader" title="点击上传照片">
+          <input type="file" accept="image/*" id="photoInput">
+          <div class="photo-placeholder" id="photoBox">上传<br>照片</div>
+        </label>
+      </header>
+
+      <main>
+        <div class="left">
+          <section class="section info" aria-label="关于我">
+            <h3>关于我</h3>
+            <p>你好，我是 Jovi，一名前端开发者，专注于构建简洁、可访问且性能良好的网页应用。具备良好的产品感和团队协作能力。</p>
+            <p>地点：北京市 • 可远程工作</p>
+            <p>邮箱：jovi@example.com</p>
+          </section>
+
+          <section class="section" aria-label="技能">
+            <h3>技能</h3>
+            <div class="skills">
+              <span class="skill">HTML / CSS</span>
+              <span class="skill">JavaScript (ES6+)</span>
+              <span class="skill">React</span>
+              <span class="skill">TypeScript</span>
+              <span class="skill">响应式设计</span>
+            </div>
+          </section>
+
+          <section class="section" aria-label="特长">
+            <h3>特长</h3>
+            <ul>
+              <li>组件化前端架构设计与实现</li>
+              <li>性能优化与 Web 标准、无障碍（a11y）实践</li>
+              <li>快速从设计稿到可交付页面</li>
+            </ul>
+          </section>
+
+          <section class="section" aria-label="爱好">
+            <h3>爱好</h3>
+            <ul>
+              <li>摄影与旅行</li>
+              <li>阅读技术与产品相关书籍</li>
+              <li>参加开源社区与技术分享</li>
+            </ul>
+          </section>
+        </div>
+
+        <aside class="right">
+          <div class="section info" aria-label="联系方式">
+            <h3>联系我</h3>
+            <p>邮箱：jovi@example.com</p>
+            <p>电话：+86 138 0000 0000</p>
+            <p>GitHub：github.com/jovigu369</p>
+          </div>
+
+          <div class="section info" aria-label="可用时间">
+            <h3>可用时间</h3>
+            <p>周一至周五 9:00 - 18:00</p>
+          </div>
+        </aside>
+      </main>
+
+      <footer>
+        最后更新：2025-11-12
+      </footer>
+    </section>
+  </div>
+
+  <script>
+    // 简单的图片预览功能
+    const photoInput = document.getElementById('photoInput');
+    const photoBox = document.getElementById('photoBox');
+
+    photoInput.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const url = URL.createObjectURL(file);
+
+      // 创建 img 元素替换占位
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = '个人照片';
+      img.className = 'photo-preview';
+
+      photoBox.innerHTML = '';
+      photoBox.appendChild(img);
+    });
+  </script>
+</body>
+</html>
