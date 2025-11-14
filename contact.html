@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>联系我 — Jovi</title>
+  <style>
+    :root {
+      --indigo: #2e3b6e;
+      --chili: #d84d42;
+      --card: #ffffff;
+      --muted: #d6dbe8;
+      --text: #0b132b;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(180deg, var(--indigo) 0%, #1f274f 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .form-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.92));
+      backdrop-filter: blur(8px);
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 15px 40px rgba(2, 6, 23, 0.6);
+      border: 2px solid var(--chili);
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--indigo);
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+      letter-spacing: 0.3px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 30px 0;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--indigo);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text);
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--chili);
+      box-shadow: 0 0 0 3px rgba(216, 77, 66, 0.15);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(180deg, var(--chili), #c1372f);
+      color: var(--card);
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(216, 77, 66, 0.3);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(216, 77, 66, 0.4);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .form-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
+    .required {
+      color: var(--chili);
+      font-weight: bold;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 600px) {
+      .form-card {
+        padding: 24px;
+        border-width: 1px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        padding: 10px 12px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form class="form-card" id="contactForm">
+      <h1>联系我</h1>
+      <p class="subtitle">有任何问题或建议，欢迎给我留言</p>
+
+      <div class="form-group">
+        <label for="name">
+          姓名 <span class="required">*</span>
+        </label>
+        <input 
+          type="text" 
+          id="name" 
+          name="name" 
+          placeholder="请输入您的姓名" 
+          required
+          autocomplete="name"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="email">
+          邮箱地址 <span class="required">*</span>
+        </label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          placeholder="请输入您的邮箱地址" 
+          required
+          autocomplete="email"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="message">
+          留言内容 <span class="required">*</span>
+        </label>
+        <textarea 
+          id="message" 
+          name="message" 
+          placeholder="请输入您的留言内容..." 
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">提交表单</button>
+
+      <p class="form-note">
+        带 <span class="required">*</span> 的字段为必填项
+      </p>
+    </form>
+  </div>
+
+  <script>
+    const contactForm = document.getElementById('contactForm');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      // 简单的客户端验证
+      if (!name) {
+        alert('请输入姓名');
+        return;
+      }
+
+      if (!email) {
+        alert('请输入邮箱地址');
+        return;
+      }
+
+      if (!message) {
+        alert('请输入留言内容');
+        return;
+      }
+
+      // 邮箱格式验证
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('请输入有效的邮箱地址');
+        return;
+      }
+
+      // 这里可以添加发送表单到服务器的逻辑
+      // 当前只是提示成功
+      alert(`感谢留言！\n\n姓名: ${name}\n邮箱: ${email}\n\n您的留言已收到。`);
+
+      // 清空表单
+      contactForm.reset();
+    });
+
+    // 实时验证邮箱格式
+    const emailInput = document.getElementById('email');
+    emailInput.addEventListener('blur', () => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (emailInput.value && !emailRegex.test(emailInput.value)) {
+        emailInput.style.borderColor = '#ff6b6b';
+      } else {
+        emailInput.style.borderColor = '#e0e0e0';
+      }
+    });
+  </script>
+</body>
+</html>
